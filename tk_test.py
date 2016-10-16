@@ -6,8 +6,8 @@ FG_COLOR = "red"
 
 world_width = 600
 world_height = 500
-x = world_width / 2
-y = world_height / 2
+x = int(world_width / 2)
+y = int(world_height / 2)
 xmove = 10
 ymove = 0
 last_xmove = None
