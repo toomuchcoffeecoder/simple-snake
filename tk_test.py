@@ -36,6 +36,7 @@ def key(event):
 
 def draw():
     global x, y, xmove, ymove, draw_count, snake_len
+    global last_xmove, last_ymove
     draw_count += 1
     if draw_count > snakebday: # snakes birthday grow by a segment
         snake_len += 1
@@ -68,7 +69,7 @@ def draw():
 
 top = tkinter.Tk()
 
-C = tkinter.Canvas(top, bg="blue", height=500, width=600)
+C = tkinter.Canvas(top, bg=BG_COLOR, height=500, width=600)
 C.pack()
 
 top.bind_all('<Key>', key)
