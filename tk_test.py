@@ -3,52 +3,52 @@ import tkinter
 
 x = 250
 y = 300
-xvect = 10
-yvect = 0
-last_xvect = None
-last_yvect = None
-line_len = 20
-line = deque()
+xmove = 10
+ymove = 0
+last_xmove = None
+last_ymove = None
+snake_len = 20
+snake = deque()
 
 def key(event):
-    global xvect, yvect, last_xvect, last_yvect
-    last_xvect = xvect
-    last_yvect = yvect
+    global xmove, ymove, last_xmove, last_ymove
+    last_xmove = xmove
+    last_ymove = ymove
     if event.keysym == 'd':
-        xvect = 10
-        yvect = 0
+        xmove = 10
+        ymove = 0
     elif event.keysym == 'a':
-        xvect = -10
-        yvect = 0
+        xmove = -10
+        ymove = 0
     elif event.keysym == 'w':
-        xvect = 0
-        yvect = -10
+        xmove = 0
+        ymove = -10
     elif event.keysym == 's':
-        xvect = 0
-        yvect = 10
+        xmove = 0
+        ymove = 10
 
 def draw():
-    global x, y, xvect, yvect
-    if len(line) == line_len:
-        point = line.popleft()
+    global x, y, xmove, ymove
+    if len(snake) == snake_len:
+        point = snake.popleft()
         C.create_line(point[0], point[1], point[0] + 10, point[1], fill="blue", width=10)
 
-    x += xvect
-    y += yvect
+    x += xmove
+    y += ymove
     point = [x,y]
-    if len(line) > 0:
-        if point == line[-1]:
-            x += last_xvect
-            y += last_yvect
-            xvect = last_xvect
-            yvect = last_yvect
+    if len(snake) > 0:
+        if point == snake[-1]:
+            x += last_xmove
+            y += last_ymove
+            xmove = last_xmove
+            ymove = last_ymove
             point = [x,y]
 
-    if point in line:
+    if point in snake:
         quit()
 
     C.create_line(x, y, x + 10, y,fill="red", width=10)
-    line.append(point)
+    snake.append(point)
     top.after(16, draw)
 
 
