@@ -1,6 +1,8 @@
 from collections import deque
 import tkinter
 
+BG_COLOR = "blue"
+FG_COLOR = "red"
 x = 250
 y = 300
 xmove = 10
@@ -31,7 +33,7 @@ def draw():
     global x, y, xmove, ymove
     if len(snake) == snake_len:
         point = snake.popleft()
-        C.create_line(point[0], point[1], point[0] + 10, point[1], fill="blue", width=10)
+        C.create_line(point[0], point[1], point[0] + 10, point[1], fill=BG_COLOR, width=10)
 
     x += xmove
     y += ymove
@@ -47,7 +49,7 @@ def draw():
     if point in snake:
         quit()
 
-    C.create_line(x, y, x + 10, y,fill="red", width=10)
+    C.create_line(x, y, x + 10, y,fill=FG_COLOR, width=10)
     snake.append(point)
     top.after(16, draw)
 
