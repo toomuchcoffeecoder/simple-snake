@@ -6,14 +6,16 @@ FG_COLOR = "red"
 
 world_width = 600
 world_height = 500
-x = 250
-y = 300
+x = world_width / 2
+y = world_height / 2
 xmove = 10
 ymove = 0
 last_xmove = None
 last_ymove = None
 snake_len = 20
 snake = deque([[x, y]])
+draw_count = 0
+snakebday = 60 * 5 # ~5 seconds 
 
 def key(event):
     global xmove, ymove, last_xmove, last_ymove
@@ -33,7 +35,12 @@ def key(event):
         ymove = 10
 
 def draw():
-    global x, y, xmove, ymove
+    global x, y, xmove, ymove, draw_count, snake_len
+    draw_count += 1
+    if draw_count > snakebday: # snakes birthday grow by a segment
+        snake_len += 1
+        draw_count = 0
+
     if len(snake) == snake_len: # don't let the snake stretch longer than its length
         point = snake.popleft()
         C.create_line(point[0], point[1], point[0] + 10, point[1], fill=BG_COLOR, width=10)
