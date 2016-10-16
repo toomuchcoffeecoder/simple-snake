@@ -3,6 +3,9 @@ import tkinter
 
 BG_COLOR = "blue"
 FG_COLOR = "red"
+
+world_width = 600
+world_height = 500
 x = 250
 y = 300
 xmove = 10
@@ -43,6 +46,11 @@ def draw():
             point = [x + last_xmove, y + last_ymove]
         
     if point in snake: # snake ate itself and died
+        quit()
+
+    # flat earth snake dies if it reaches the edge
+    if ( point[0] < 0 or point[0] > world_width
+            or point[1] < 0 or point[1] > world_height):
         quit()
 
     x, y = point
