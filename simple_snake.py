@@ -46,12 +46,12 @@ def draw():
         point = snake.popleft()
         C.create_line(point[0], point[1], point[0] + 10, point[1], fill=BG_COLOR, width=10)
 
-    point = [x + xmove, y + ymove]
+    point = (x + xmove, y + ymove)
     if len(snake) > 1: # snakes dont move backwards
         if point == snake[-2]:
             xmove = last_xmove
             ymove = last_ymove
-            point = [x + last_xmove, y + last_ymove]
+            point = (x + last_xmove, y + last_ymove)
         
     if point in snake: # snake ate itself and died
         quit()
