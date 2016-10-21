@@ -13,7 +13,7 @@ ymove = 0
 last_xmove = None
 last_ymove = None
 snake_len = 20
-snake = deque([[x, y]])
+snake = deque(((x, y))
 draw_count = 0
 snakebday = 60 * 5 # ~5 seconds 
 
